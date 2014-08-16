@@ -1,7 +1,7 @@
 <h1>Welcome#home</h1>
 <p>Find me in app/views/welcome/home.html.erb</p>
 
-<div id='map'></div>
+<div data-trips='<%= @trips %>' id='map'></div>
 
 <style type="text/css">
 	
@@ -21,7 +21,8 @@
 // 	L.polyline(array, polyline_options).addTo(map);
 // }
 
-
+var arr = $('#map').data('trips');
+console.log(arr[0]);
 // Define polyline options
 // http://leafletjs.com/reference.html#polyline
 var polyline_options = {
@@ -49,11 +50,8 @@ directionsService.route(directionsRequest, function(response, status){
 });
 
 function addPoints(ll_array) {
-
 	polyline.addLatLng(L.latLng(ll_array[0][0], ll_array[0][1]));
 	ll_array.shift();
- 	console.log(ll_array)
-
 	if (ll_array.length > 1) setTimeout(function(){addPoints(ll_array)}, 100);
 }
 
