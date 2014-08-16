@@ -113,13 +113,10 @@ GEM
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
     slop (3.6.0)
-<<<<<<< HEAD
-=======
     sorcery (0.8.6)
       bcrypt (~> 3.1)
       oauth (~> 0.4, >= 0.4.4)
       oauth2 (>= 0.8.0, < 1.0.0)
->>>>>>> 2edbac87b8569e1898e4c8f7ce5f6d898aef5cb7
     spring (1.1.3)
     sprockets (2.11.0)
       hike (~> 1.2)
@@ -154,11 +151,8 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   pg
-<<<<<<< HEAD
   pry
-=======
   pry-rails
->>>>>>> 2edbac87b8569e1898e4c8f7ce5f6d898aef5cb7
   rails (= 4.1.1)
   rails_12factor
   sass-rails (~> 4.0.3)
