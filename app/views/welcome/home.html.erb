@@ -12,44 +12,27 @@
 </style>
 
 <script type="text/javascript">
-	
-	var	map = L.mapbox.map('map', 'dhurley99.j8dg121l').setView([43.655, -79.401], 13);
+	L.mapbox.accessToken = 'pk.eyJ1IjoiZGh1cmxleTk5IiwiYSI6IjYyMHJZQjAifQ.4o5afc1bToYBBxS-QPIoZw';
+	var	map = L.mapbox.map('map', 'dhurley99.j8dg121l').setView([43.655, -79.401], 14);
 
-	var geojson = { type: 'LineString', coordinates: [] };
-var start = [5, 20];
-var momentum = [3, 3];
 
-for (var i = 0; i < 300; i++) {
-    start[0] += momentum[0];
-    start[1] += momentum[1];
-    if (start[1] > 60 || start[1] < -60) momentum[1] *= -1;
-    if (start[0] > 170 || start[0] < -170) momentum[0] *= -1;
-    geojson.coordinates.push(start.slice());
-}
+// Create array of lat,lon points.
+var line_points = [
+    [43.655, -79.401],
+    [43.655, -79.5],
+    [43.655, -80]
+];
 
-// Add this generated geojson object to the map.
-L.geoJson(geojson).addTo(map);
+// Define polyline options
+// http://leafletjs.com/reference.html#polyline
+var polyline_options = {
+    color: 'blue'
+};
 
-// Create a counter with a value of 0.
-var j = 0;
+// Defining a polygon here instead of a polyline will connect the
+// endpoints and fill the path.
+// http://leafletjs.com/reference.html#polygon
+var polyline = L.polyline(line_points, polyline_options).addTo(map);
 
-// Create a marker and add it to the map.
-var marker = L.marker([0, 0], {
-  icon: L.mapbox.marker.icon({
-    'marker-color': '#f86767'
-  })
-}).addTo(map);
 
-tick();
-function tick() {
-    // Set the marker to be at the same point as one
-    // of the segments or the line.
-    marker.setLatLng(L.latLng(
-        geojson.coordinates[j][1],
-        geojson.coordinates[j][0]));
-
-    // Move to the next point of the line
-    // until `j` reaches the length of the array.
-    if (++j < geojson.coordinates.length) setTimeout(tick, 100);
-}
 </script>
