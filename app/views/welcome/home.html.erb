@@ -29,10 +29,8 @@ var polyline_options = {
 
 var polyline = L.polyline([]).addTo(map);
 
-for (route in locations) {
-	console.log(route[0])
-	console.log(route[1])
-	trip = new Trip(route[0], route[1])
+for(var i = 0; i < locations.length; i++) {
+	trip = new Trip(locations[i][0], locations[i][1]);
 	trip.getDirections();
 }
 
@@ -42,6 +40,7 @@ function Trip(start_location, end_location) {
 	this.end_location = new google.maps.LatLng(43.659778,-79.37978);
 
 	this.getDirections = function() {
+		
 		var directionsService = new google.maps.DirectionsService();
 		var directionsRequest = {origin: this.start_location, destination: this.end_location, travelMode: google.maps.DirectionsTravelMode.BICYCLING};
 
