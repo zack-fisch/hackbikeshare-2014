@@ -1,7 +1,7 @@
 <h1>Welcome#home</h1>
 <p>Find me in app/views/welcome/home.html.erb</p>
 
-<div id='map'></div>
+<div data-trips='<%= @trips %>' id='map'></div>
 
 <style type="text/css">
 	
@@ -10,50 +10,52 @@
 		width: 100%;
 	}
 </style>
-
+<% pry %>
 <script type="text/javascript">
 	L.mapbox.accessToken = 'pk.eyJ1IjoiZGh1cmxleTk5IiwiYSI6IjYyMHJZQjAifQ.4o5afc1bToYBBxS-QPIoZw';
 	var	map = L.mapbox.map('map', 'dhurley99.j8dg121l').setView([43.655, -79.401], 14);
 
 
-// Create array of lat,lon points.
-// function addLines(array) {
-// 	L.polyline(array, polyline_options).addTo(map);
-// }
+	var polyline_options = {
+	    color: 'blue'
+	};
 
 
+var arr = $('#map').data('trips');
+console.log(arr.duration)
 // Define polyline options
 // http://leafletjs.com/reference.html#polyline
 var polyline_options = {
     color: 'blue'
 };
 
-var polyline = L.polyline([]).addTo(map);
-
-var start_location = new google.maps.LatLng(43.639832,-79.395954);
-var end_location = new google.maps.LatLng(43.659778,-79.37978);
-
-var directionsService = new google.maps.DirectionsService();
-var directionsRequest = {origin: start_location, destination:end_location, travelMode: google.maps.DirectionsTravelMode.BICYCLING};
+	var polyline = L.polyline([]).addTo(map);
 
 
-directionsService.route(directionsRequest, function(response, status){	
-		var ll_array = [];
-		var path = response.routes[0].overview_path
+function Trip(start_location, end_location) {
+	this.start_location = new google.maps.LatLng(43.639832,-79.395954);
+	this.end_location = new google.maps.LatLng(43.659778,-79.37978);
 
-		for(var i = 0; i < path.length; i++) {
-			ll_array.push([path[i].d, path[i].e])
-		}
+	this.getDirections = function() {
+		var directionsService = new google.maps.DirectionsService();
+		var directionsRequest = {origin: this.start_location, destination: this.end_location, travelMode: google.maps.DirectionsTravelMode.BICYCLING};
 
-		addPoints(ll_array) 
-});
+		directionsService.route(directionsRequest, function(response, status){	
+			var ll_array = [];
+			var path = response.routes[0].overview_path
+
+			for(var i = 0; i < path.length; i++) {
+				ll_array.push([path[i].d, path[i].e])
+			}
+
+			addPoints(ll_array) 
+		});
+ 	};
+}
 
 function addPoints(ll_array) {
-
 	polyline.addLatLng(L.latLng(ll_array[0][0], ll_array[0][1]));
 	ll_array.shift();
- 	console.log(ll_array)
-
 	if (ll_array.length > 1) setTimeout(function(){addPoints(ll_array)}, 100);
 }
 
