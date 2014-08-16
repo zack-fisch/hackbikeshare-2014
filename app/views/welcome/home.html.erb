@@ -27,12 +27,17 @@ var polyline_options = {
     color: 'blue'
 };
 
+
+var polyline = L.polyline([]).addTo(map);
+
 for(var i = 1; i < locations.length; i++) {
-	var trip = new Trip(locations[i][0], locations[i][1]);
+	trip = new Trip(locations[i][0], locations[i][1]);
 	trip.getDirections();
 }
 
 function Trip(start_location, end_location) {
+
+	var _this = this;
 	this.start_location = new google.maps.LatLng(start_location[0], start_location[1]);
 	this.end_location = new google.maps.LatLng(end_location[0], start_location[1]);
 
@@ -42,17 +47,19 @@ function Trip(start_location, end_location) {
 		var directionsRequest = {origin: _this.start_location, destination: _this.end_location, travelMode: google.maps.DirectionsTravelMode.BICYCLING};
 
 		directionsService.route(directionsRequest, function(response, status){	
+
 			var ll_array = [];
 
 			if (response) {
 				var path = response.routes[0].overview_path
 
 				for(var i = 0; i < path.length; i++) {
-					ll_array.push([path[i].d, path[i].e])
-				}
-
-				_this.addPoints(ll_array) 
+				ll_array.push([path[i].d, path[i].e])
 			}
+				_this.addPoints(ll_array);
+			}
+			 
+
 		});
 	}
 
