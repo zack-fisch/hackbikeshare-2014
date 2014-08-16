@@ -11,11 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20140816192020) do
+=======
+
+ActiveRecord::Schema.define(version: 20140816144047) do
+>>>>>>> 2edbac87b8569e1898e4c8f7ce5f6d898aef5cb7
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+<<<<<<< HEAD
   create_table "stations", force: true do |t|
     t.string   "station_name"
     t.integer  "station_id"
@@ -33,5 +39,14 @@ ActiveRecord::Schema.define(version: 20140816192020) do
     t.string   "bike_number"
     t.datetime "created_at"
     t.datetime "updated_at"
+=======
+
+  create_table "users", force: true do |t|
+    t.string   "email",            null: false
+    t.string   "crypted_password", null: false
+    t.string   "salt",             null: false
+
+
+>>>>>>> 2edbac87b8569e1898e4c8f7ce5f6d898aef5cb7
   end
 end
