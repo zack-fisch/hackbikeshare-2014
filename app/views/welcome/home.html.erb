@@ -38,16 +38,23 @@ var directionsRequest = {origin: start_location, destination:end_location, trave
 
 
 directionsService.route(directionsRequest, function(response, status){	
-		var ll_array = [[43.639832,-79.395954], [43.639832,-79.395954]];
+		var ll_array = [];
 		var path = response.routes[0].overview_path
 
 		for(var i = 0; i < path.length; i++) {
-			addPoints(path[i].d, path[i].e)
-		} 
+			ll_array.push([path[i].d, path[i].e])
+		}
+
+		addPoints(ll_array) 
 });
 
-function addPoints(lat,lng) {
-	polyline.addLatLng(L.latLng(lat, lng));
+function addPoints(ll_array) {
+
+	polyline.addLatLng(L.latLng(ll_array[0][0], ll_array[0][1]));
+	ll_array.shift();
+ 	console.log(ll_array)
+
+	if (ll_array.length > 1) setTimeout(function(){addPoints(ll_array)}, 100);
 }
 
 </script>
