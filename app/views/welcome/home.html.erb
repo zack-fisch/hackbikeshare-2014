@@ -10,7 +10,7 @@
 		width: 100%;
 	}
 </style>
-
+<% pry %>
 <script type="text/javascript">
 	L.mapbox.accessToken = 'pk.eyJ1IjoiZGh1cmxleTk5IiwiYSI6IjYyMHJZQjAifQ.4o5afc1bToYBBxS-QPIoZw';
 	var	map = L.mapbox.map('map', 'dhurley99.j8dg121l').setView([43.655, -79.401], 14);
@@ -22,7 +22,7 @@
 // }
 
 var arr = $('#map').data('trips');
-console.log(arr[0]);
+console.log(arr.duration)
 // Define polyline options
 // http://leafletjs.com/reference.html#polyline
 var polyline_options = {
