@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
   def home
-	  @trips = Trip.where(start_station_id: 7000).limit(100)
-    @trips += Trip.where(start_station_id: 7005).limit(100)
+	  @trips = Trip.where(start_station_id: 7000).limit(200)
+    @trips += Trip.where(start_station_id: 7005).limit(200)
 
 	  @locations = []
 
@@ -12,5 +12,17 @@ class WelcomeController < ApplicationController
 	 		  @locations << [[@start_station.latitude, @start_station.longitude], [@end_station.latitude, @end_station.longitude]]
 	 	  end
 	  end
+    @locations.uniq!
+  end
+
+  def map
+    @people = Trip.all.limit(50).pluck(:zip_code)
+    @people = @people.select {|person| person && person.length > 3 }
+    @coordinates = []
+
+    @people.each do |zip|
+      @coordinates.push(Geocoder.coordinates(zip))
+    end
+    @coordinates
   end
 end

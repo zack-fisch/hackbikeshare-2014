@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'signup' => 'users#new'
   get 'login' => 'user_sessions#new'
   get 'logout' => 'user_sessions#destroy'
+  get 'map' => 'welcome#map'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
