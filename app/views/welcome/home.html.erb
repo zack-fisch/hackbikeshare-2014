@@ -1,7 +1,7 @@
 <h1>Welcome#home</h1>
 <p>Find me in app/views/welcome/home.html.erb</p>
 
-<div data-trips='<%= @trips %>' id='map'></div>
+<div data-trips='<%= @locations %>' id='map'></div>
 
 <style type="text/css">
 	
@@ -21,8 +21,8 @@
 	};
 
 
-var arr = $('#map').data('trips');
-console.log(arr.duration)
+var locations = $('#map').data('trips');
+console.log(locations);
 // Define polyline options
 // http://leafletjs.com/reference.html#polyline
 var polyline_options = {
