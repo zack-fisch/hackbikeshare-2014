@@ -6,7 +6,7 @@
 <style type="text/css">
 	
 	#map {
-		height: 400px;
+		height: 800px;
 		width: 100%;
 	}
 </style>
@@ -27,40 +27,47 @@ var polyline_options = {
     color: 'blue'
 };
 
-var polyline = L.polyline([]).addTo(map);
 
-for(var i = 0; i < locations.length; i++) {
-	trip = new Trip(locations[i][0], locations[i][1]);
+for(var i = 1; i < locations.length; i++) {
+	var trip = new Trip(locations[i][0], locations[i][1]);
 	trip.getDirections();
 }
 
 
 function Trip(start_location, end_location) {
-	this.start_location = new google.maps.LatLng(43.639832,-79.395954);
-	this.end_location = new google.maps.LatLng(43.659778,-79.37978);
+	this.start_location = new google.maps.LatLng(start_location[0], start_location[1]);
+	this.end_location = new google.maps.LatLng(end_location[0], start_location[1]);
 
 	this.getDirections = function() {
-		
+		var _this = this
 		var directionsService = new google.maps.DirectionsService();
 		var directionsRequest = {origin: this.start_location, destination: this.end_location, travelMode: google.maps.DirectionsTravelMode.BICYCLING};
 
 		directionsService.route(directionsRequest, function(response, status){	
 			var ll_array = [];
-			var path = response.routes[0].overview_path
 
-			for(var i = 0; i < path.length; i++) {
-				ll_array.push([path[i].d, path[i].e])
+			if (response) {
+				var path = response.routes[0].overview_path
+
+				for(var i = 0; i < path.length; i++) {
+					ll_array.push([path[i].d, path[i].e])
+				}
+
+				_this.addPoints(ll_array) 
 			}
 
-			this.addPoints(ll_array) 
 		});
 	}
 
+	this.polyline = L.polyline([]).addTo(map);
+
 	this.addPoints = function(ll_array) {
-		polyline.addLatLng(L.latLng(ll_array[0][0], ll_array[0][1]));
+		var _this = this
+		_this.polyline.addLatLng(L.latLng(ll_array[0][0], ll_array[0][1]));
 		ll_array.shift();
-		if (ll_array.length > 1) setTimeout(function(){addPoints(ll_array)}, 100);
+		if (ll_array.length > 1) setTimeout(function(){_this.addPoints(ll_array)}, 100);
  	};
+
 }
 
 

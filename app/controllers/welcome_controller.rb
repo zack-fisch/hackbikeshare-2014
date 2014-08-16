@@ -1,6 +1,8 @@
 class WelcomeController < ApplicationController
   def home
-  	 @trips = Trip.all.limit(100)
+  	 @trips = Trip.where(start_station_id: 7000).limit(200) 
+     @trips += Trip.where(start_station_id: 7005).limit(200) 
+     binding.pry
   	 @locations = []
 
   	 @trips.each do |trip|
@@ -9,7 +11,7 @@ class WelcomeController < ApplicationController
   		if @start_station && @end_station
   	 		@locations << [[@start_station.latitude, @start_station.longitude], [@end_station.latitude, @end_station.longitude]]
   	 	end
-  	 	@locations.uniq!
+  	 	@locations
   	 end
   end
 end
