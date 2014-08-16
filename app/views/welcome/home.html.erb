@@ -21,14 +21,19 @@
 
 
 var locations = $('#map').data('trips');
-console.log(locations);
-// Define polyline options
-// http://leafletjs.com/reference.html#polyline
+
 var polyline_options = {
     color: 'blue'
 };
 
 var polyline = L.polyline([]).addTo(map);
+
+for (route in locations) {
+	console.log(route[0])
+	console.log(route[1])
+	trip = new Trip(route[0], route[1])
+	trip.getDirections();
+}
 
 
 function Trip(start_location, end_location) {
@@ -47,15 +52,16 @@ function Trip(start_location, end_location) {
 				ll_array.push([path[i].d, path[i].e])
 			}
 
-			addPoints(ll_array) 
+			this.addPoints(ll_array) 
 		});
+	}
+
+	this.addPoints = function(ll_array) {
+		polyline.addLatLng(L.latLng(ll_array[0][0], ll_array[0][1]));
+		ll_array.shift();
+		if (ll_array.length > 1) setTimeout(function(){addPoints(ll_array)}, 100);
  	};
 }
 
-function addPoints(ll_array) {
-	polyline.addLatLng(L.latLng(ll_array[0][0], ll_array[0][1]));
-	ll_array.shift();
-	if (ll_array.length > 1) setTimeout(function(){addPoints(ll_array)}, 100);
-}
 
 </script>
