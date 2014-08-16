@@ -4,7 +4,7 @@
 	<ul>
 		<% @users.each do |user| %>
 			<li class='user-index'>
-				<span class='user-name'><%= user.email %></span>
+				<span class='user-name'><%= link_to user.email, user_path(user) %></span>
 				<%= gravatar_for(user) %>
 			</li>
 		<% end %>
