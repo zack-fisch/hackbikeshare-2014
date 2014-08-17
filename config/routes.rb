@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get 'login' => 'user_sessions#new'
   get 'logout' => 'user_sessions#destroy'
   get 'map' => 'welcome#map'
+  get 'rules' => 'welcome#rules'
+
 
 
 
