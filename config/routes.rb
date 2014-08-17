@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   root 'welcome#home'
+  get '/:station', to: 'welcome#home'
 
   resources :user_sessions
   resources :users
