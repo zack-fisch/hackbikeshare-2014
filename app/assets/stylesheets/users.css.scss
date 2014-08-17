@@ -1,3 +1,5 @@
+//user index
+
 .user-list {
 	width: 500px;
 	margin-left: auto;
@@ -37,4 +39,34 @@
 
 .user-container {
 	height: 60px;
+}
+
+//user profile
+
+.user-profile-container {
+	text-align: center;
+}
+
+.user-badges {
+	position: relative;
+	top: 20px;
+	background-color: #95a5a6;
+	width: 100%;
+	border-top: 1px solid #7f8c8d;
+}
+
+.user-badge {
+	height: 100px;
+	width: 100px;
+}
+
+#gravatar-show {
+	height: 200px;
+	width: 100%;
+
+	img {
+		height: 200px;
+		width: 200px;
+	}
+
 }
