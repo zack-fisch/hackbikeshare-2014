@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 gem 'pg'
 gem 'sorcery'
 gem 'pry-rails'
+gem 'twitter-bootstrap-rails'
+gem 'bootstrap_form'
 
 group :production do
   gem 'rails_12factor'

@@ -1,7 +1,9 @@
 class WelcomeController < ApplicationController
   def home
-	  @trips = Trip.where(start_station_id: 7000).limit(200)
-    @trips += Trip.where(start_station_id: 7005).limit(200)
+    @stations = Station.pluck(:station_name)
+
+    @station = Station.find_by(station_name: params[:station])
+	  @trips = @station ? Trip.where(start_station_id: @station.station_id).limit(200) : Trip.where(start_station_id: 7025).limit(200)
 
 	  @locations = []
 
@@ -23,7 +25,7 @@ class WelcomeController < ApplicationController
     @people.each do |zip|
       @coordinates.push(Geocoder.coordinates(zip))
     end
-    	
-  	@coordinates.compact!
+
+    @coordinates.compact!s
   end
 end
