@@ -1,29 +1,3 @@
 <%= @riddle.riddle %>
 <%= submit_tag "I'm here", class: 'check-in' %>
 
-<%= javascript_tag do %>
-
-	var position = function getLocation() {
-    if (navigator.geolocation) {
-        return navigator.geolocation.getCurrentPosition(showPosition);
-		}
-	}
-	
-	$(document).ready( function(){
-		$('.check-in').on('click', function(){
-	    if (navigator.geolocation) {
-	      navigator.geolocation.getCurrentPosition(checkIn);
-			}
-		});	
-
-		function checkIn(position) {
-			$.ajax({
-				url: '<%= j riddle_checkin_path(@riddle) %>',
-				data: {location: [position.coords.latitude, position.coords.longitude]},
-				type: 'GET',
-				dataType: 'script'
-			});
-		}
-	});
-	
-<% end %>

@@ -1,9 +1,18 @@
-<h1>User <%= @user.email %></h1>
-<div id='gravatar-show'>
-	<%= gravatar_for @user %>
-</div>
-<div class='container user-badges'>
+<div class='user-profile-container'>
+	<h1><%= @user.email %></h1>
+
+	<div id='gravatar-show'>
+		<%= gravatar_for @user %>
+	</div>
+
+	<div class='user-badges'>
+		<h4>Acquired Badges</h4>
 		<% @badges.each do |badge| %>
-				<span><%= badge  %></span>
+			<% if current_user.has_badge?(badge) %>
+				<%= image_tag badge, class: 'user-badge' %>
+			<% else %>
+				<%= image_tag 'badges/default.png', class: 'user-badge' %>
+			<% end %>
 		<% end %>
+	</div>
 </div>
