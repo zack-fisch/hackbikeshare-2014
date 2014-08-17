@@ -1,0 +1,28 @@
+<div data-markers='<%= @coordinates %>' id='map2'></div>
+
+<style type="text/css">
+	
+	#map2 {
+		height: 800px;
+	}
+</style>
+
+<script type="text/javascript">
+
+var map2 = L.mapbox.map('map2', 'dhurley99.j8g4jf4e').setView([43.65, -79.388], 14);
+
+var arr = $('#map2').data('markers');
+
+for(var i=0; i < arr.length; i++) {
+	L.marker(arr[i],{
+		icon: L.mapbox.marker.icon({
+			'marker-size': 'large',
+			'marker-symbol': 'bicycle',
+			'marker-color': '#fa0'
+		})
+	}).addTo(map2);
+}
+
+map2.scrollWheelZoom.disable();
+
+</script>
