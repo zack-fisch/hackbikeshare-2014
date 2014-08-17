@@ -16,13 +16,14 @@
 </head>
 <body>
 <%= render 'layouts/navbar' %>
+<div>
+  <p id="notice"><%= flash[:notice] %></p>
+  <p id="alert"><%= flash[:alert] %></p>
+</div>
 
 <%= yield %>
 
-<div>
-	<p id="notice"><%= flash[:notice] %></p>
-  <p id="alert"><%= flash[:alert] %></p>
-</div>
+
 
 </body>
 </html>
