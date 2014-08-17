@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140817135731) do
+ActiveRecord::Schema.define(version: 20140817144557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20140817135731) do
     t.text     "riddle"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "badge"
   end
 
   create_table "stations", force: true do |t|
