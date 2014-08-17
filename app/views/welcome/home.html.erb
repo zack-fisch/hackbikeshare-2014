@@ -4,7 +4,7 @@
 <%= select_tag 'station', options_for_select(@stations), class: 'station_select' %>
 <%= submit_tag 'search', class: 'station_search' %>
 
-<div data-trips='<%= @locations %>' id='map'></div>
+<div data-trips='<%= @locations %>' data-station-lat='<%= @station.latitude %>' data-station-long='<%= @station.longitude %>' id='map'></div>
 
 <style type="text/css">
 	
@@ -15,8 +15,20 @@
 </style>
 
 <script type="text/javascript">
-	L.mapbox.accessToken = 'pk.eyJ1IjoiZGh1cmxleTk5IiwiYSI6Ik43YUZ0bkUifQ.N0Zlgkj7xfrDiczUjVdYkg';
+	L.mapbox.accessToken = 'pk.eyJ1IjoiZGh1cmxleTk5IiwiYSI6IjYyMHJZQjAifQ.4o5afc1bToYBBxS-QPIoZw';
+
 	var	map = L.mapbox.map('map', 'dhurley99.j8dg121l').setView([43.655, -79.401], 14);
+
+	var stationLat = $('#map').data('station-lat');
+	var stationLong = $('#map').data('station-long');
+
+	L.marker([stationLat,stationLong], {
+		icon: L.mapbox.marker.icon({
+			'marker-size': 'large',
+			'marker-symbol': 'bicycle',
+			'marker-color': '#fa0'
+		})
+	}).addTo(map);
 
 
 	var polyline_options = {
@@ -75,23 +87,6 @@
 			if (ll_array.length > 1) setTimeout(function(){_this.addPoints(ll_array)}, 100);
 	 	};
 	}
-
-	// $(document).ready( function(){
-	// 	$('.station_search').on('submit', function(e){
-	// 		e.preventDefault();
-	// 		var selection = $('.station_select').val();
-
-
-	// 		$.ajax({
-	// 			url: '/',
-	// 			type: 'GET',
-	// 			data: {station: selection}
-	// 		}).done( function(data){
-				
-	// 		})
-	// 	});
-	// });
-
 
 
 </script>
