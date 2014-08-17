@@ -33,6 +33,7 @@ h1 {
 	padding-top: 1.5rem;
 	margin-top: 2rem;
 	font-size: 26px;
+	text-align: center;
 }
 
 /* Display Users */
@@ -99,4 +100,11 @@ h1 {
 
 #map {
 	z-index: 2;
+}
+
+/* Leaderboard */
+
+.grav-index {
+	height: 20px;
+	width: 20px;
 }
