@@ -1,0 +1,23 @@
+<%= riddle.riddle %>
+<%= submit_tag "I'm here!", class: 'check-in' %>
+
+<%= javascript_tag do %>
+	function getLocation() {
+	    if (navigator.geolocation) {
+	        navigator.geolocation.getCurrentPosition(showPosition);
+	    } else { 
+	        x.innerHTML = "Geolocation is not supported by this browser.";
+	    }
+	}
+
+	function showPosition(position) {
+	   console.log(position.coords.latitude)
+	   console.log(position.coords.longitude)
+	}
+
+	$.get({
+		url: '/riddle/' + <%= riddle.id %> + '/check_in',
+		data: {location: navigator.geolocation.getCurrentPosition()}
+	})
+
+<% end %>

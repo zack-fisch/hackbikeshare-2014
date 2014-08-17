@@ -5,11 +5,13 @@ Rails.application.routes.draw do
 
   resources :user_sessions
   resources :users
+  resources :riddles
 
   get 'signup' => 'users#new'
   get 'login' => 'user_sessions#new'
   get 'logout' => 'user_sessions#destroy'
   get 'map' => 'welcome#map'
+  get '/riddle/:id/check_in', to: 'riddles#check_in', as: 'riddle_checkin'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

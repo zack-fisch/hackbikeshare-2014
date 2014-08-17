@@ -1,0 +1,2 @@
+module RiddlesHelper
+end
