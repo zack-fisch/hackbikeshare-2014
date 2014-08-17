@@ -23,7 +23,7 @@ class WelcomeController < ApplicationController
     @people.each do |zip|
       @coordinates.push(Geocoder.coordinates(zip))
     end
-    @coordinates.compact!
-    binding.pry
+    	
+  	@coordinates.compact!
   end
 end
