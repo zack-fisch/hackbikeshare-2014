@@ -1,4 +1,5 @@
 <% @riddles.each do |riddle| %>
 	<%= riddle.riddle %>
+	<%= link_to "Check in", riddle_path(riddle) %>
 <% end %>
 

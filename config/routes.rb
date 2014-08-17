@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root 'welcome#home'
-  get '/:station', to: 'welcome#home'
+  get '/home/:station', to: 'welcome#home'
   get '/riddle/:id/check_in', to: 'riddles#check_in', as: 'riddle_checkin'
 
   resources :user_sessions

@@ -8,11 +8,13 @@ class RiddlesController < ApplicationController
 		@riddle = Riddle.find(params[:id])
 	end
 
+	def create
+	end
+
 	def check_in
 		@location = params['location']
-		@coords = [36.94159, -82.473447]
 		@riddle = Riddle.find(params[:id])
+		@coords = [@riddle.latitude, @riddle.longitude]
 		@distance = Geocoder::Calculations.distance_between(@coords, @location, units: :km)
-		redirect_to riddle_path(@riddle)
 	end
 end

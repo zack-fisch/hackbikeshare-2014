@@ -21,7 +21,7 @@
 				url: '<%= j riddle_checkin_path(@riddle) %>',
 				data: {location: [position.coords.latitude, position.coords.longitude]},
 				type: 'GET',
-				dataType: 'HTML',
+				dataType: 'script',
 			}).done( function(data){
 				console.log(data);
 			});
