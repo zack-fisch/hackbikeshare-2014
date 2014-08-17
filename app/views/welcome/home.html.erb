@@ -1,20 +1,38 @@
-<h1>Plan Your Route, Unlock Achievements!</h1>
+<div class='container text-center'>
+	<h1>Plan Your Route, Unlock Achievements!</h1>
+	<p class='lead'>This is a paragraph that quickly explains the purpose of the game and how it supports bike sharing in Toronto.</p>
+	<p><%= link_to "Play the Game", riddles_path, class: 'btn btn-default btn-success btn-lg'  %></p>
+</div>
+<div id='mapper'>
+	<%= form_tag ('/'), method: 'get' %>
+	<p class='container'><%= select_tag 'station', options_for_select(@stations), class: 'station_select selectpicker' %>
+	<%= submit_tag 'search', class: 'station_search btn btn-default' %></p>
 
-<%= form_tag ('/'), method: 'get' %>
-<%= select_tag 'station', options_for_select(@stations), class: 'station_select selectpicker' %>
-<%= submit_tag 'search', class: 'station_search' %>
-
-<div data-trips='<%= @locations %>' data-station-lat='<%= @station.latitude %>' data-station-long='<%= @station.longitude %>' id='map'></div>
-
+	<div data-trips='<%= @locations %>' data-station-lat='<%= @station.latitude %>' data-station-long='<%= @station.longitude %>' id='map'></div>
+</div>
 <style type="text/css">
 	
 	#map {
-		height: 800px;
+		height: 500px;
 		width: 100%;
+	}
+
+	.btn {
+		width: 150px;
+	}
+
+	#mapper {
+		margin-top: 20px;
+	}
+
+	.station_search {
+		position: relative;
+		bottom: 5px;
 	}
 </style>
 
 <script type="text/javascript">
+
 	
 	$('.selectpicker').selectpicker({
       style: 'btn-info',

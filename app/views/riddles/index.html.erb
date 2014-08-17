@@ -1,3 +1,36 @@
-<div class='riddle-container'>
-	<%= render @riddles %>
+<div class='riddle-index'>
+	<h2>Your Next Riddle</h2>
+	<h5>Completed: <%= 5 - @riddles.count %> out of 5 </h5>
+	<div class='riddle-<%= @riddle.id %> riddle-container'>
+		<%= @riddle.riddle %>
+		<%= link_to "check in", '#', class: 'btn btn-default btn-success check-in' %>
+	</div>
 </div>
+
+<%= javascript_tag do %>
+
+	var position = function getLocation() {
+    if (navigator.geolocation) {
+        return navigator.geolocation.getCurrentPosition(showPosition);
+		}
+	}
+	
+	$(document).ready( function(){
+		$('.check-in').on('click', function(e){
+			e.preventDefault();
+	    if (navigator.geolocation) {
+	      navigator.geolocation.getCurrentPosition(checkIn);
+			}
+		});	
+
+		function checkIn(position) {
+			$.ajax({
+				url: '<%= j riddle_checkin_path(@riddle) %>',
+				data: {location: [position.coords.latitude, position.coords.longitude], id: '<%= @riddle.id %>'},
+				type: 'GET',
+				dataType: 'script'
+			});
+		}
+	});
+	
+<% end %>
