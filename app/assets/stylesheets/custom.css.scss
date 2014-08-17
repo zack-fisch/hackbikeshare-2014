@@ -88,4 +88,15 @@ h1 {
 
 .selectpicker {
 	margin-bottom: 1rem;
+	z-index: 1;
+}
+
+.check-mark {
+	display: none !important
+}
+
+/* Map */
+
+#map {
+	z-index: 2;
 }
