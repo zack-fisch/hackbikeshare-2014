@@ -9,6 +9,9 @@ class RiddlesController < ApplicationController
 	end
 
 	def check_in
+		binding.pry
+		@location = params['location']
 		@riddle = Riddle.find(params[:id])
+		redirect_to riddle_path(@riddle)
 	end
 end

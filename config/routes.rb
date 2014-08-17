@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   root 'welcome#home'
   get '/:station', to: 'welcome#home'
+  get '/riddle/:id/check_in', to: 'riddles#check_in', as: 'riddle_checkin'
 
   resources :user_sessions
   resources :users
@@ -11,7 +12,8 @@ Rails.application.routes.draw do
   get 'login' => 'user_sessions#new'
   get 'logout' => 'user_sessions#destroy'
   get 'map' => 'welcome#map'
-  get '/riddle/:id/check_in', to: 'riddles#check_in', as: 'riddle_checkin'
+
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
