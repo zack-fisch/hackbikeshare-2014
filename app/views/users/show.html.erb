@@ -2,3 +2,8 @@
 <div id='gravatar-show'>
 	<%= gravatar_for @user %>
 </div>
+<div class='container user-badges'>
+		<% @badges.each do |badge| %>
+				<span><%= badge  %></span>
+		<% end %>
+</div>

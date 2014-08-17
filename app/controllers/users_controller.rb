@@ -20,6 +20,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_id(params[:id])
+    @riddles = @user.badges.pluck(:riddle_id)
+    @badges = []
+    @riddles.each do |riddle|
+      @badges << Riddle.find(riddle).badge
+    end
     if @user
       render 'show'
     else 
