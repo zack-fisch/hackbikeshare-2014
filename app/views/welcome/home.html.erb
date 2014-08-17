@@ -1,11 +1,11 @@
 <div class='container text-center'>
-	<h1>Plan Your Route, Unlock Achievements!</h1>
-	<p class='lead'>This is a paragraph that quickly explains the purpose of the game and how it supports bike sharing in Toronto.</p>
+	<h1>Discover Toronto the Right Way!</h1>
+	<p class='lead'>Use Bike Share to to help you solve riddles around the city. Check in at the right location and collect your next badge. Use the map below to help.</p>
 	<p><%= link_to "Play the Game", riddles_path, class: 'btn btn-default btn-success btn-lg'  %></p>
 </div>
 <div id='mapper'>
 	<%= form_tag ('/'), method: 'get' %>
-	<p class='container'><%= select_tag 'station', options_for_select(@stations), class: 'station_select selectpicker' %>
+	<p><%= select_tag 'station', options_for_select(@stations), class: 'station_select selectpicker' %>
 	<%= submit_tag 'search', class: 'station_search btn btn-default' %></p>
 
 	<div data-trips='<%= @locations %>' data-station-lat='<%= @station.latitude %>' data-station-long='<%= @station.longitude %>' id='map'></div>
