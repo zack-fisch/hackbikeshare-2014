@@ -1,5 +1,5 @@
-if ('<%= @distance %>' < 1) {
-	alert('You have successfully check in!!!');
+if ('<%= @distance %>' < 0.5) {
+	alert('You have successfully check in at <%= @riddle.name %>!!!');
 	window.location.href = '<%= riddles_path %>'
 } else {
 	alert('Almost there, keep trying!');

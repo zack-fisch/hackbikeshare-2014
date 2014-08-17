@@ -32,3 +32,6 @@
 # trips.each do |row|
 # 	Trip.create(duration: row[1], start_station_id: row[4], end_station_id: row[7], bike_number: row[8], zip_code: row[10])
 # end
+
+address = ['test']
+locations = [['Bitmaker Labs', 43.647194, -79.387186],['CN Tower',43.642504, -79.3871], ['Royal Ontario Museum', 43.667384, -79.394691], ['Art Gallery of Ontario', 43.653529, -79.392651], ['University of Toronto', 43.663917, -79.393561]]
