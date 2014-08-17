@@ -38,6 +38,7 @@ gem 'spring',        group: :development
 gem 'gmaps4rails'
 gem 'underscore-rails'
 gem 'pry'
+gem 'pry-byebug'
 gem 'geocoder'
 
 # Use ActiveModel has_secure_password

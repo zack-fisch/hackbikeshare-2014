@@ -3,7 +3,7 @@
 	<%= gravatar_for @user %>
 </div>
 <div class='container user-badges'>
-		<% @badges.each do |badge| %>
-				<span><%= badge  %></span>
-		<% end %>
+	<% @badges.each do |badge| %>
+		<span><%= image_tag badge %></span>
+	<% end %>
 </div>
