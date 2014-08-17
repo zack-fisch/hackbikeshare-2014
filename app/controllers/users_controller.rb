@@ -10,8 +10,9 @@ class UsersController < ApplicationController
 
   def create
   	@user = User.new(user_params)
-  	if @user.save
-  		redirect_to @user, notice: 'User was successfully created'
+  	if @user.save 
+     auto_login(@user)
+     redirect_to(@user, notice: 'User Created & Login Successful')
   	else
   		render 'new'
   	end

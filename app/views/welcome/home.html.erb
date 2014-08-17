@@ -1,7 +1,7 @@
 <h1>Plan Your Route, Unlock Achievements!</h1>
 
 <%= form_tag ('/'), method: 'get' %>
-<%= select_tag 'station', options_for_select(@stations), class: 'station_select' %>
+<%= select_tag 'station', options_for_select(@stations), class: 'station_select selectpicker' %>
 <%= submit_tag 'search', class: 'station_search' %>
 
 <div data-trips='<%= @locations %>' data-station-lat='<%= @station.latitude %>' data-station-long='<%= @station.longitude %>' id='map'></div>
@@ -15,6 +15,12 @@
 </style>
 
 <script type="text/javascript">
+	
+	$('.selectpicker').selectpicker({
+      style: 'btn-info',
+      size: 80
+  });
+
 	L.mapbox.accessToken = 'pk.eyJ1IjoiZGh1cmxleTk5IiwiYSI6IjYyMHJZQjAifQ.4o5afc1bToYBBxS-QPIoZw';
 
 	var	map = L.mapbox.map('map', 'dhurley99.j8dg121l').setView([43.655, -79.401], 14);
