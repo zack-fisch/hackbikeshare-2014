@@ -2,7 +2,7 @@
 	<h2>Your Next Riddle</h2>
 	<h5>Completed: <%= 5 - @riddles.count %> out of 5 </h5>
 	<div class='riddle-<%= @riddle.id %> riddle-container'>
-		<%= @riddle.riddle %>
+		<p><%= @riddle.riddle %></p>
 		<%= link_to "check in", '#', class: 'btn btn-default btn-success check-in' %>
 	</div>
 </div>

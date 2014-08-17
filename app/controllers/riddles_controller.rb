@@ -2,7 +2,7 @@ class RiddlesController < ApplicationController
 	before_filter :require_login
 
 	def index
-		@riddles = Riddle.order('created_at DESC').select do |riddle|
+		@riddles = Riddle.select do |riddle|
 			!current_user.badges.pluck(:riddle_id).include?(riddle.id)
 		end
 		@riddle = @riddles.first

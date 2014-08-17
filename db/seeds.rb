@@ -33,5 +33,10 @@
 # 	Trip.create(duration: row[1], start_station_id: row[4], end_station_id: row[7], bike_number: row[8], zip_code: row[10])
 # end
 
-address = ['test']
 locations = [['Bitmaker Labs', 43.647194, -79.387186],['CN Tower',43.642504, -79.3871], ['Royal Ontario Museum', 43.667384, -79.394691], ['Art Gallery of Ontario', 43.653529, -79.392651], ['University of Toronto', 43.663917, -79.393561]]
+badges = ['badges/bitmaker.png', 'badges/cntower.png', 'badges/ROM.png', 'badges/AGO.png', 'badges/uoft.png']
+riddles = ['Nine weeks of intensive coding happens inside, future devs are those who survive.', 'It takes 1776 stair to climb to the top, make sure to wear your sneakers or you may have to stop.', 'Ancient artifacts and dinosaurs abound, come and see the sights that astound.', "Get to know the Group of Seven, while roaming through this art lover's heaven.", 'A university known worldwide, come see the knowledge hidden inside.']
+
+(0..4).each do |n|
+	Riddle.create(name: locations[n][0], latitude: locations[n][1], longitude: locations[n][2], badge: badges[n], riddle: riddles[n])
+end
