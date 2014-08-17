@@ -8,9 +8,7 @@
 		</thead>
 		<tbody>
 			<% @users.each do |user| %>
-				<%= link_to user_path(user) do %>
 					<tr id='user-row'><td> <p><%= user.badges.count %></p> </td><td><p><%= link_to user.email, user_path(user) %></p></td><td><%= gravatar_for(user) %></td></tr>
-				<% end %>
 			<% end %>
 		</tbody>
 		
