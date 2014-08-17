@@ -2,8 +2,8 @@ class WelcomeController < ApplicationController
   def home
     @stations = Station.pluck(:station_name)
 
-    @station = Station.find_by(station_name: params[:station])
-	  @trips = @station ? Trip.where(start_station_id: @station.station_id).limit(200) : Trip.where(start_station_id: 7025).limit(200)
+    @station = Station.find_by(station_name: params[:station]) || Station.first
+	  @trips = Trip.where(start_station_id: @station.station_id).limit(200)
 
 	  @locations = []
 
