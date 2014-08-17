@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   skip_before_filter :require_login, only: [:index, :new, :create, :show]
   def index
-    @users = User.all
+    @users = User.all.sort_by {|user| user.badges.count}.reverse
   end
 
   def new

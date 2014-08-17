@@ -1,12 +1,22 @@
 <h1><%= User.count %> Users</h1>
 
 <div id='user-list'>
-	<ul>
-		<% @users.each do |user| %>
-			<li class='user-index'>
-				<span class='user-name'><%= link_to user.email, user_path(user) %></span>
-				<%= gravatar_for(user) %>
-			</li>
-		<% end %>
-	</ul>
+	<div class='user-container'>
+			<div class='badge-count'>
+				<h4>Badges Earned</h4>
+			</div>
+			<div class='user-info'>
+				<h4>User</h4>
+			</div>
+		</div>
+	<% @users.each do |user| %>
+		<div class='user-container'>
+			<div class='badge-count'>
+				<p><%= user.badges.count %></p>
+			</div>
+			<div class='user-info'>
+				<%= link_to user.email, user_path(user) %>
+			</div>
+		</div>
+	<% end %>
 </div>

@@ -1,5 +1,5 @@
 <%= @riddle.riddle %>
-<%= submit_tag "I'm here!", class: 'check-in' %>
+<%= submit_tag "I'm here", class: 'check-in' %>
 
 <%= javascript_tag do %>
 
@@ -21,9 +21,7 @@
 				url: '<%= j riddle_checkin_path(@riddle) %>',
 				data: {location: [position.coords.latitude, position.coords.longitude]},
 				type: 'GET',
-				dataType: 'script',
-			}).done( function(data){
-				console.log(data);
+				dataType: 'script'
 			});
 		}
 	});

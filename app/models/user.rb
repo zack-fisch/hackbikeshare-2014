@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+	has_many :badges
   authenticates_with_sorcery!
 
   validates :password, length: { minimum: 3 }

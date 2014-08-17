@@ -1,6 +1,40 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-h1 {
+.user-list {
+	width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.badge-count {
+	width: 200px;
+	float: left;
 	text-align: center;
+	font-size: 3rem;
+
+	p {
+		position: relative;
+		top: 30px;
+		margin: 0;
+	}
+}
+
+.user-info {
+	width: 200px;
+	float:left;
+	text-align: left;
+
+	a {
+		color: black;
+		font-size: 1.5rem;
+		position:relative;
+		top: 30px;
+
+		&:hover {
+			color: #3498db;
+			text-decoration: none;
+		}
+	}
+}
+
+.user-container {
+	height: 60px;
 }
