@@ -8,7 +8,7 @@
 	<div class='user-badges'>
 		<h4>Acquired Badges</h4>
 		<% @badges.each do |badge| %>
-			<% if current_user.has_badge?(badge) %>
+			<% if current_user && current_user.has_badge?(badge) %>
 				<%= image_tag badge, class: 'user-badge' %>
 			<% else %>
 				<%= image_tag 'badges/default.png', class: 'user-badge' %>
