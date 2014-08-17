@@ -1,72 +1,18 @@
-//user index
-
-.user-list {
-	width: 500px;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.badge-count {
-	width: 200px;
-	float: left;
-	text-align: center;
-	font-size: 3rem;
-
-	p {
-		position: relative;
-		top: 30px;
-		margin: 0;
-	}
-}
-
-.user-info {
-	width: 200px;
-	float:left;
-	text-align: left;
-
-	a {
-		color: black;
-		font-size: 1.5rem;
-		position:relative;
-		top: 30px;
-
-		&:hover {
-			color: #3498db;
-			text-decoration: none;
-		}
-	}
-}
-
-.user-container {
-	height: 60px;
-}
-
-//user profile
-
-.user-profile-container {
-	text-align: center;
-}
-
-.user-badges {
-	position: relative;
-	top: 20px;
-	background-color: #95a5a6;
-	width: 100%;
-	border-top: 1px solid #7f8c8d;
-}
-
-.user-badge {
-	height: 100px;
-	width: 100px;
-}
-
-#gravatar-show {
-	height: 200px;
-	width: 100%;
-
-	img {
-		height: 200px;
-		width: 200px;
+#table {
+		width: 45rem;
+		height: 100%;
+		margin: 0 auto;
 	}
 
-}
+	#user-row {
+	height: 15rem;
+	}
+
+	#user-row p {
+		margin-top: 5rem;
+	}
+
+	#user-row:hover {
+		background: #e9e9e9;
+		cursor: pointer;
+	}
